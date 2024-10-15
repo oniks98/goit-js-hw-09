@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -74,7 +77,6 @@ const img = images
             <img
               class="gallery-image"
               src="${preview}"
-              data-source="${original}"
               alt="${description}"
             />
           </a>
@@ -84,45 +86,10 @@ const img = images
 
 listGallery.insertAdjacentHTML('beforeend', img);
 
-listGallery.addEventListener('click', galleryClick);
-
-function galleryClick(event) {
-  event.preventDefault();
-
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-  openModal(event.target.dataset.source);
-}
-
-document.addEventListener('keydown', galleryKeydown);
-
-function galleryKeydown(event) {
-  const isOpenModal = document.querySelector('.basicLightbox'); // перевірка, чи модальне вікно відкрите
-  if (['Enter', 'NumpadEnter', 'Space'].includes(event.code) && !isOpenModal) {
-    const img = event.target.querySelector('img');
-    if (img) {
-      openModal(img.dataset.source);
-    }
-  }
-}
-
-function openModal(image) {
-  const instance = basicLightbox.create(
-    `
-    <img src="${image}">
-`,
-    {
-      onShow: () => document.addEventListener('keydown', closeModal),
-      onClose: () => document.removeEventListener('keydown', closeModal),
-    }
-  );
-
-  instance.show();
-
-  function closeModal(event) {
-    if (event.code === 'Escape') {
-      instance.close();
-    }
-  }
-}
+let gallery = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  overlayOpacity: 0.8,
+  widthRatio: 0.9,
+  heightRatio: 0.9,
+});

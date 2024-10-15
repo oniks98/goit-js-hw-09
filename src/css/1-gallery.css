@@ -1,0 +1,19 @@
+img {
+  display: block;
+  width: 100%;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.gallery li {
+  width: calc((100% - 48px) / 3);
+}
+
+img {
+  cursor: zoom-in;
+}
