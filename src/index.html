@@ -19,12 +19,24 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <main>
-      <load src="./1-gallery.html" />
-      <load src="./2-form.html" />
-    </main>
+    <main id="main-content"></main>
 
-    <script type="module" src="./js/1-gallery.js"></script>
-    <script type="module" src="./js/2-form.js"></script>
+    <script type="module">
+      fetch('./1-gallery.html')
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector('#main-content').innerHTML += data;
+
+          import('./js/1-gallery.js').then(module => {});
+        });
+
+      fetch('./2-form.html')
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector('#main-content').innerHTML += data;
+
+          import('./js/2-form.js').then(module => {});
+        });
+    </script>
   </body>
 </html>
