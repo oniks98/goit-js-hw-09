@@ -46,3 +46,48 @@ function removeLocalStorage(evt) {
     if (!formData.message) textarea.placeholder = 'Fill please all fields';
   }
 }
+
+//  /////////////////////////////////////////////////////////////////////////////////
+// const STORAGE_KEY = 'feedback-form-state';
+// let formData = { email: '', message: '' };
+
+// const form = document.querySelector('.feedback-form');
+// const emailInput = form.elements.email;
+// const messageInput = form.elements.message;
+
+// popText();
+
+// form.addEventListener('submit', event => {
+//   event.preventDefault();
+
+//   const formValues = {
+//     email: emailInput.value.trim(),
+//     message: messageInput.value.trim(),
+//   };
+
+//   if (formData.email === '' || formData.message === '') {
+//     return alert('Please fill in all the fields!');
+//   }
+
+//   console.log(formValues);
+
+//   form.reset();
+//   localStorage.removeItem(STORAGE_KEY);
+//   formData = { email: '', message: '' };
+// });
+
+// form.addEventListener('input', event => {
+//   formData[event.target.name] = event.target.value.trim();
+//   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+// });
+
+// function popText() {
+//   const savedData = localStorage.getItem(STORAGE_KEY);
+
+//   if (savedData) {
+//     formData = JSON.parse(savedData);
+
+//     emailInput.value = formData.email || '';
+//     messageInput.value = formData.message || '';
+//   }
+// }
